@@ -1,20 +1,20 @@
-import { useRoutes} from "react-router-dom";
-import {Paths} from "./paths.js";
-import {ProtectedRoute} from "../ProtectedRoutes.jsx";
-import DashboardPage from '../../pages/DashboardPage.jsx'
-import NotFoundPage from "../../pages/NotFoundPage.jsx";
-import LoginPage from "../../pages/LoginPage.jsx";
+import { useRoutes } from 'react-router-dom';
+import { Paths } from './paths.js';
+import { ProtectedRoute } from '../ProtectedRoutes.jsx';
+import DashboardPage from '../../pages/DashboardPage.jsx';
+import NotFoundPage from '../../pages/NotFoundPage.jsx';
+import LoginPage from '../../pages/LoginPage.jsx';
 
-const GlobalRoutes= () => {
+const GlobalRoutes = () => {
   const routes = [
     {
       path: Paths.DASHBOARD,
       element: (
-          <ProtectedRoute>
-            <DashboardPage/>
-          </ProtectedRoute>
+        <ProtectedRoute>
+          <DashboardPage />
+        </ProtectedRoute>
       ),
-      errorElement: <NotFoundPage/>,
+      errorElement: <NotFoundPage />,
       children: [
         //---------------------------------------------------------------
         // {
@@ -22,19 +22,17 @@ const GlobalRoutes= () => {
         //   path: Paths.ORDER,
         //   element: <OrderTable/>,
         // },
-      ]
+      ],
     },
     {
       index: true,
       path: Paths.LOGIN,
-      element: <LoginPage/>,
+      element: <LoginPage />,
     },
     {
       index: true,
       path: '*',
-      element: (
-          <NotFoundPage/>
-      ),
+      element: <NotFoundPage />,
     },
   ];
 
