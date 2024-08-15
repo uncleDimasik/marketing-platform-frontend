@@ -16,12 +16,6 @@ import {
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { useLoginMutation } from '@/services/auth/useLoginMutation.js';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { loginUser } from '@/api/auth.js';
-import { ACCESS_TOKEN } from '@/api/constants.js';
-import { toast } from '@/components/ui/use-toast.js';
-
-
 
 const FormSchema = z.object({
   email: z
@@ -31,8 +25,6 @@ const FormSchema = z.object({
   password: z.string().min(8, { message: 'At least 8 characters' }),
 });
 
-
-
 export function AuthFormView() {
   const form = useForm({
     resolver: zodResolver(FormSchema),
@@ -41,6 +33,7 @@ export function AuthFormView() {
       password: '',
     },
   });
+
   const loginMutation = useLoginMutation();
   function onSubmit(data) {
     loginMutation.mutate({

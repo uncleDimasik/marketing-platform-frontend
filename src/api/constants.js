@@ -2,8 +2,7 @@ const API_BASE_URL = import.meta.env.VITE_API_URL;
 
 const API_RESOURCES = {
   AUTH: 'auth',
-  USERS: 'users',
-  // Добавляйте другие ресурсы по мере необходимости
+  USER: 'user',
 };
 
 const API_ENDPOINTS = {
@@ -13,6 +12,7 @@ const API_ENDPOINTS = {
   REGISTER: 'register',
   REFRESH_TOKEN: 'refresh',
   // user
+  USERS: 'users',
   WHO_AM_I: 'whoAmI',
   //
   GET: (id) => `${id}`,
@@ -31,12 +31,7 @@ function createApiUrl(resource, endpoint, param) {
   }
 
   const endpointPath =
-    typeof endpoint === 'function'
-      ? endpoint(param)
-      : API_ENDPOINTS[endpoint.toUpperCase()];
-  if (!endpointPath) {
-    throw new Error(`Endpoint ${endpoint} not found`);
-  }
+    typeof endpoint === 'function' ? endpoint(param) : endpoint;
 
   return `${resourcePath}/${endpointPath}`;
 }

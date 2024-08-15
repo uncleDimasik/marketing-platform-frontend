@@ -1,15 +1,24 @@
-import { ACCESS_TOKEN, API_ENDPOINTS, API_RESOURCES, API_STATUSES, createApiUrl } from '@/api/constants.js';
-import { auth } from '@/api/config.js';
+import {
+  ACCESS_TOKEN,
+  API_BASE_URL,
+  API_ENDPOINTS,
+  API_RESOURCES,
+  API_STATUSES,
+  createApiUrl,
+} from '@/api/constants.js';
+import { axiosClient } from '@/api/config.js';
+import axios from 'axios';
 
 export const refreshAccessToken = async () => {
-  const response = await auth.get(
-    createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.REFRESH_TOKEN),
+  const response = await axios.get(
+    `${API_BASE_URL}/${createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.REFRESH_TOKEN)}`,
+    { withCredentials: true },
   );
   return response.data;
 };
 
 export const registerUser = async (user) => {
-  const response = await auth.post(
+  const response = await axiosClient.post(
     createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.REGISTER),
     user,
   );
@@ -17,15 +26,16 @@ export const registerUser = async (user) => {
 };
 
 export const loginUser = async (user) => {
-  const response = await auth.post(
+  const response = await axiosClient.post(
     createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.LOGIN),
     user,
   );
+  console.log('rr ' + response);
   return response.data;
 };
 
 export const logoutUser = async () => {
-  const response = await auth.get(
+  const response = await axiosClient.get(
     createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.LOGOUT),
   );
   return response.data;

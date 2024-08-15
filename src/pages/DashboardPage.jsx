@@ -1,3 +1,12 @@
+import { useWhoAmIQuery } from '@/services/user/useWhoAmIQuery.js';
+
 export default function DashboardPage() {
-  return <>Dashboard</>;
+  const { data } = useWhoAmIQuery();
+
+  return (
+    <>
+      Dashboard
+      {data && JSON.stringify(data)}
+    </>
+  );
 }

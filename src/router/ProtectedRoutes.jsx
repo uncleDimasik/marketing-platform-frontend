@@ -1,13 +1,15 @@
 import { Navigate, useLocation } from 'react-router-dom';
 import { Paths } from './globalRoutes/paths.js';
+import { useCheckAuth } from '@/services/auth/useCheckAuth.js';
 
 export const ProtectedRoute = ({ children }) => {
   const location = useLocation();
 
-  let isAuth = true;
+  const { data, isLoading, status } = useCheckAuth();
 
-  // if (loading) return null;
-  return isAuth ? (
+  if (isLoading) return <>loading...</>;
+
+  return data && !isLoading && status === 'success' ? (
     <>{children}</>
   ) : (
     <Navigate to={Paths.LOGIN} replace state={{ from: location }} />
