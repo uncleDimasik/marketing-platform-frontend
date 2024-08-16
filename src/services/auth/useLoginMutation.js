@@ -1,6 +1,5 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { loginUser } from '@/api/auth.js';
-import { ACCESS_TOKEN } from '@/api/constants.js';
 import { toast } from '@/components/ui/use-toast.js';
 import { useNavigate } from 'react-router-dom';
 import { Paths } from '@/router/globalRoutes/paths.js';

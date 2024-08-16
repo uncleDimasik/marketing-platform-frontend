@@ -2,12 +2,9 @@ import axios from 'axios';
 import {
   ACCESS_TOKEN,
   API_BASE_URL,
-  API_ENDPOINTS,
-  API_RESOURCES,
   API_STATUSES,
-  createApiUrl,
 } from '@/api/constants.js';
-import { logoutUser, refreshAccessToken } from '@/api/auth.js';
+import { refreshAccessToken } from '@/api/auth.js';
 
 export const axiosClient = axios.create({
   baseURL: API_BASE_URL,

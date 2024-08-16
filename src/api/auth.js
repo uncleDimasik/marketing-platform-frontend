@@ -1,9 +1,7 @@
 import {
-  ACCESS_TOKEN,
   API_BASE_URL,
   API_ENDPOINTS,
   API_RESOURCES,
-  API_STATUSES,
   createApiUrl,
 } from '@/api/constants.js';
 import { axiosClient } from '@/api/config.js';

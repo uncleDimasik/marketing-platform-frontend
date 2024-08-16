@@ -1,10 +1,7 @@
 import {
-  useMutation,
   useQuery,
-  useQueryClient,
 } from '@tanstack/react-query';
 import {
-  ACCESS_TOKEN,
   API_ENDPOINTS,
   API_RESOURCES,
   createApiUrl,
