@@ -1,9 +1,11 @@
-import { useRoutes } from 'react-router-dom';
+import { Navigate, Outlet, useRoutes } from 'react-router-dom';
 import { Paths } from './paths.js';
 import { ProtectedRoute } from '../ProtectedRoutes.jsx';
 import DashboardPage from '../../pages/DashboardPage.jsx';
 import NotFoundPage from '../../pages/NotFoundPage.jsx';
-import LoginPage from '../../pages/LoginPage.jsx';
+import AuthPage from '../../pages/AuthPage.jsx';
+import { LoginFormView } from '@/views/LoginFormView.jsx';
+import { RegistrationFormView } from '@/views/RegistrationFormView.jsx';
 
 const GlobalRoutes = () => {
   const routes = [
@@ -25,12 +27,28 @@ const GlobalRoutes = () => {
       ],
     },
     {
-      index: true,
-      path: Paths.LOGIN,
-      element: <LoginPage />,
+      path: Paths.AUTH,
+      element: <AuthPage children={<Outlet />} />,
+      children: [
+        {
+          index: true,
+          element: <Navigate to={Paths.LOGIN} replace />,
+        },
+        {
+          path: Paths.LOGIN,
+          element: <LoginFormView />,
+        },
+        {
+          path: Paths.REGISTER,
+          element: <RegistrationFormView />,
+        },
+      ],
     },
     {
-      index: true,
+      path: '/',
+      element: <Navigate to={Paths.DASHBOARD} replace />,
+    },
+    {
       path: '*',
       element: <NotFoundPage />,
     },

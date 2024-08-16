@@ -12,6 +12,6 @@ export const ProtectedRoute = ({ children }) => {
   return data && !isLoading && status === 'success' ? (
     <>{children}</>
   ) : (
-    <Navigate to={Paths.LOGIN} replace state={{ from: location }} />
+    <Navigate to={Paths.AUTH} replace state={{ from: location }} />
   );
 };

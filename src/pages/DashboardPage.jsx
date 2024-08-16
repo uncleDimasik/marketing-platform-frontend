@@ -1,4 +1,5 @@
 import { useWhoAmIQuery } from '@/services/user/useWhoAmIQuery.js';
+import { CampaignFormView } from '@/views/CampaignFormView.jsx';
 
 export default function DashboardPage() {
   const { data } = useWhoAmIQuery();
@@ -7,6 +8,7 @@ export default function DashboardPage() {
     <>
       Dashboard
       {data && JSON.stringify(data)}
+      <CampaignFormView />
     </>
   );
 }

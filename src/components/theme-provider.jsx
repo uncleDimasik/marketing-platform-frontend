@@ -1,9 +1,4 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useState,
-} from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 
 // Possible themes: "dark", "light", "system"
 const initialState = {
@@ -19,9 +14,7 @@ export function ThemeProvider({
   storageKey = 'vite-ui-theme',
   ...props
 }) {
-  const [theme, setThemeState] = useState(
-    () => localStorage.getItem(storageKey) || defaultTheme,
-  );
+  const [theme, setThemeState] = useState(() => localStorage.getItem(storageKey) || defaultTheme);
 
   useEffect(() => {
     const root = window.document.documentElement;
@@ -29,9 +22,7 @@ export function ThemeProvider({
     root.classList.remove('light', 'dark');
 
     if (theme === 'system') {
-      const systemTheme = window.matchMedia(
-        '(prefers-color-scheme: dark)',
-      ).matches
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches
         ? 'dark'
         : 'light';
       root.classList.add(systemTheme);

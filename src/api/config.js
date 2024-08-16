@@ -1,9 +1,5 @@
 import axios from 'axios';
-import {
-  ACCESS_TOKEN,
-  API_BASE_URL,
-  API_STATUSES,
-} from '@/api/constants.js';
+import { ACCESS_TOKEN, API_BASE_URL, API_STATUSES } from '@/api/constants.js';
 import { refreshAccessToken } from '@/api/auth.js';
 
 export const axiosClient = axios.create({
@@ -11,10 +7,7 @@ export const axiosClient = axios.create({
   withCredentials: true,
 });
 
-axiosClient.defaults.headers.common['Content-Type'] =
-  'application/json';
-
-// const refreshTokenUrl = `${API_BASE_URL}${createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.REFRESH_TOKEN)}`;
+axiosClient.defaults.headers.common['Content-Type'] = 'application/json';
 
 axiosClient.interceptors.response.use(
   (response) => {
@@ -24,10 +17,7 @@ axiosClient.interceptors.response.use(
     const originalRequest = error.config;
     const errStatus = error.response.status;
     console.log(originalRequest);
-    if (
-      errStatus === API_STATUSES.UNAUTHORIZED &&
-      !originalRequest._retry
-    ) {
+    if (errStatus === API_STATUSES.UNAUTHORIZED && !originalRequest._retry) {
       originalRequest._retry = true;
 
       try {

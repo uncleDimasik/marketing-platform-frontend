@@ -3,18 +3,20 @@ const API_BASE_URL = import.meta.env.VITE_API_URL;
 const API_RESOURCES = {
   AUTH: 'auth',
   USER: 'user',
+  STATISTICS: 'statistics',
 };
 
 const API_ENDPOINTS = {
   //auth
   LOGIN: 'login',
   LOGOUT: 'logout',
-  REGISTER: 'register',
+  REGISTRATION: 'registration',
   REFRESH_TOKEN: 'refresh',
   // user
   USERS: 'users',
   WHO_AM_I: 'whoAmI',
-  //
+  //statistics
+  FORECAST: 'forecast',
   GET: (id) => `${id}`,
 };
 
@@ -30,17 +32,9 @@ function createApiUrl(resource, endpoint, param) {
     throw new Error(`Resource ${resource} not found`);
   }
 
-  const endpointPath =
-    typeof endpoint === 'function' ? endpoint(param) : endpoint;
+  const endpointPath = typeof endpoint === 'function' ? endpoint(param) : endpoint;
 
   return `${resourcePath}/${endpointPath}`;
 }
 
-export {
-  API_BASE_URL,
-  API_ENDPOINTS,
-  API_RESOURCES,
-  API_STATUSES,
-  ACCESS_TOKEN,
-  createApiUrl,
-};
+export { API_BASE_URL, API_ENDPOINTS, API_RESOURCES, API_STATUSES, ACCESS_TOKEN, createApiUrl };

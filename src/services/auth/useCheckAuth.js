@@ -1,6 +1,4 @@
-import {
-  useQuery,
-} from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import { refreshAccessToken } from '@/api/auth.js';
 
 export const useCheckAuth = () => {
