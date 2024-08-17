@@ -1,5 +1,5 @@
 import { API_BASE_URL, API_ENDPOINTS, API_RESOURCES, createApiUrl } from '@/api/constants.js';
-import { axiosClient } from '@/api/config.js';
+import { axiosClient } from '@/api/axios-config.js';
 import axios from 'axios';
 
 export const refreshAccessToken = async () => {
@@ -16,9 +16,7 @@ export const registerUser = async (user) => {
   const response = await axiosClient.post(
     createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.REGISTRATION),
     user,
-  );
-  return response.data;
-};
+  );return response.data;};
 
 export const loginUser = async (user) => {
   const response = await axiosClient.post(
@@ -29,7 +27,7 @@ export const loginUser = async (user) => {
 };
 
 export const logoutUser = async () => {
-  const response = await axiosClient.get(createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.LOGOUT));
+  const response = await axiosClient.post(createApiUrl(API_RESOURCES.AUTH, API_ENDPOINTS.LOGOUT));
   return response.data;
 };
 

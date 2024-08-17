@@ -1,17 +1,19 @@
 import { Navigate, useLocation } from 'react-router-dom';
-import { Paths } from './globalRoutes/paths.js';
-import { useCheckAuth } from '@/services/auth/useCheckAuth.js';
+import { useCheckAuthQuery } from '@/services/auth/useCheckAuthQuery.js';
+import { RouterPaths } from '@/router/globalRoutes/routerPaths.js';
+import { LoadingIndicatorView } from '@/views/LoadingIndicatorView.jsx';
 
 export const ProtectedRoute = ({ children }) => {
   const location = useLocation();
+  const { status } = useCheckAuthQuery();
 
-  const { data, isLoading, status } = useCheckAuth();
+  if (status === 'pending') {
+    return <LoadingIndicatorView />;
+  }
 
-  if (isLoading) return <>loading...</>;
+  if (status !== 'success') {
+    return <Navigate to={RouterPaths.AUTH} replace state={{ from: location }} />;
+  }
 
-  return data && !isLoading && status === 'success' ? (
-    <>{children}</>
-  ) : (
-    <Navigate to={Paths.AUTH} replace state={{ from: location }} />
-  );
+  return <>{children}</>;
 };

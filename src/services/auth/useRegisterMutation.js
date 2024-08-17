@@ -2,7 +2,7 @@ import { useMutation } from '@tanstack/react-query';
 import { registerUser } from '@/api/auth.js';
 import { toast } from '@/components/ui/use-toast.js';
 import { useNavigate } from 'react-router-dom';
-import { Paths } from '@/router/globalRoutes/paths.js';
+import { RouterPaths } from '@/router/globalRoutes/routerPaths.js';
 
 export const useRegisterMutation = () => {
   const navigate = useNavigate();
@@ -12,7 +12,7 @@ export const useRegisterMutation = () => {
       toast({
         title: 'You are registered',
       });
-      navigate(Paths.DASHBOARD);
+      navigate(RouterPaths.DASHBOARD);
     },
   });
 

@@ -1,8 +1,8 @@
-const Paths = {
+const RouterPaths = {
   AUTH: '/auth',
   DASHBOARD: '/dashboard',
   LOGIN: 'login',
   REGISTER: 'register',
 };
 
-export { Paths };
+export { RouterPaths };

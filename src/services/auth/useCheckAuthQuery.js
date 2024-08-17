@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import { refreshAccessToken } from '@/api/auth.js';
 
-export const useCheckAuth = () => {
+export const useCheckAuthQuery = () => {
   const { data, status, isLoading } = useQuery({
     queryKey: ['checkAuth'],
     queryFn: refreshAccessToken,

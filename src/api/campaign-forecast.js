@@ -1,4 +1,4 @@
-import { axiosClient } from '@/api/config.js';
+import { axiosClient } from '@/api/axios-config.js';
 import { API_ENDPOINTS, API_RESOURCES, createApiUrl } from '@/api/constants.js';
 
 export const campaignForecast = async (campaign) => {

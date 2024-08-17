@@ -22,8 +22,6 @@ axiosClient.interceptors.response.use(
 
       try {
         const res = await refreshAccessToken();
-        console.log('dddddddddd');
-        console.log(res);
         localStorage.setItem(ACCESS_TOKEN, res.accessToken);
         return axiosClient.request(originalRequest);
       } catch (e) {
