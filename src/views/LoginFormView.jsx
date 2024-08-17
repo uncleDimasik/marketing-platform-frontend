@@ -11,10 +11,10 @@ const loginSchema = z.object({
 });
 
 export function LoginFormView() {
-  const loginMutation = useLoginMutation();
+  const { mutate, error } = useLoginMutation();
 
   const onSubmit = (formData) => {
-    loginMutation.mutate(formData);
+    mutate(formData);
   };
 
   return (
@@ -22,6 +22,7 @@ export function LoginFormView() {
       formSchema={loginSchema}
       defaultValues={{ email: '', password: '' }}
       onSubmit={onSubmit}
+      error={error}
     />
   );
 }

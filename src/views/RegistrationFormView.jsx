@@ -12,15 +12,15 @@ const registrationSchema = z
     confirmPassword: z.string().min(8, { message: 'At least 8 characters' }).max(16, { message: 'Max 16 characters' }),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: "Passwords don't match",
+    message: 'Passwords don\'t match',
     path: ['confirmPassword'],
   });
 
 export function RegistrationFormView() {
-   const registerMutation = useRegisterMutation();
+  const { mutate, error } = useRegisterMutation();
 
   const onSubmit = (formData) => {
-    registerMutation.mutate(formData);
+    mutate(formData);
   };
 
   return (
@@ -29,6 +29,7 @@ export function RegistrationFormView() {
       defaultValues={{ email: '', password: '', confirmPassword: '' }}
       onSubmit={onSubmit}
       isRegistration={true}
+      error={error}
     />
   );
 }

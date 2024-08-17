@@ -1,19 +1,12 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
-
 import { Button } from '@/components/ui/button.jsx';
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from '@/components/ui/form.jsx';
-import { Input } from '@/components/ui/input.jsx';
+import { Form } from '@/components/ui/form.jsx';
 import { useIsMutating } from '@tanstack/react-query';
+import { FormFieldInput } from '@/components/FormFieldInput.jsx';
+import React from 'react';
 
-export function AuthForm({ formSchema, defaultValues, onSubmit, isRegistration }) {
+export function AuthForm({ formSchema, defaultValues, onSubmit, isRegistration, error }) {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues,
@@ -26,54 +19,31 @@ export function AuthForm({ formSchema, defaultValues, onSubmit, isRegistration }
       <div className='w-full max-w-md p-8 space-y-8  rounded-lg shadow-lg'>
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className='space-y-6'>
-            <FormField
+            <FormFieldInput
               control={form.control}
               name='email'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Email</FormLabel>
-                  <FormControl>
-                    <Input placeholder='Enter your email' {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              label='Email'
+              placeholder='Enter your email'
             />
 
-            <FormField
+            <FormFieldInput
               control={form.control}
               name='password'
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <Input
-                      type='password'
-                      placeholder='Enter your password'
-                      autoComplete='on'
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
+              label='Password'
+              type='password'
+              placeholder='Enter your password'
             />
+
             {isRegistration && (
-              <FormField
+              <FormFieldInput
                 control={form.control}
                 name='confirmPassword'
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Confirm Password</FormLabel>
-                    <FormControl>
-                      <Input type='password' placeholder='Confirm your password' {...field} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
+                label='Confirm Password'
+                type='password'
+                placeholder='Confirm your password'
               />
             )}
-
+            {error && <div className='mt-6 text-red-600'>Error: {error?.response?.data?.message}</div>}
             <Button type='submit' className='w-full' isLoading={isMutating}>
               Submit
             </Button>

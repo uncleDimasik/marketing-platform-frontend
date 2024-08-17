@@ -6,5 +6,6 @@ export const campaignForecast = async (campaign) => {
     createApiUrl(API_RESOURCES.STATISTICS, API_ENDPOINTS.FORECAST),
     campaign,
   );
+
   return response.data;
 };

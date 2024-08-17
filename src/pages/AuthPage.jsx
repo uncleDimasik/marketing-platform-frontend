@@ -1,24 +1,25 @@
 import { Link, useLocation } from 'react-router-dom';
 import { RouterPaths } from '@/router/globalRoutes/routerPaths.js';
 import { Button } from '@/components/ui/button.jsx';
+import { WrapperView } from '@/views/WrapperView.jsx';
 
 export default function AuthPage({ children }) {
   const { pathname } = useLocation();
   const isLogin = pathname.includes(RouterPaths.LOGIN);
 
   return (
-    <div className={' min-h-screen flex flex-col items-center justify-center '}>
-      <h1 className='flex mt-2.5 text-2xl font-semibold'>{isLogin ? 'Login' : 'Registration'}</h1>
+    <WrapperView>
+      <h2 className='text-2xl font-semibold mb-6 text-center'>{isLogin ? 'Login' : 'Registration'}</h2>
       {children}
       {isLogin ? (
-        <Button variant={'link'}>
+        <Button className='w-full' variant={'link'}>
           <Link to={`${RouterPaths.REGISTER}`}>Register</Link>
         </Button>
       ) : (
-        <Button variant={'link'}>
+        <Button className='w-full' variant={'link'}>
           <Link to={`${RouterPaths.LOGIN}`}>Login</Link>
         </Button>
       )}
-    </div>
+    </WrapperView>
   );
 }
