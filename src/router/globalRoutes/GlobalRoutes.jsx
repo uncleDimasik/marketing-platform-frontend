@@ -7,6 +7,7 @@ import AuthPage from '../../pages/AuthPage.jsx';
 import { LoginFormView } from '@/views/LoginFormView.jsx';
 import { RegistrationFormView } from '@/views/RegistrationFormView.jsx';
 import { HeaderView } from '@/views/HeaderView.jsx';
+import { RootRoute } from '@/router/RootRoute.jsx';
 
 const GlobalRoutes = () => {
   const routes = [
@@ -40,7 +41,7 @@ const GlobalRoutes = () => {
     },
     {
       path: '/',
-      element: <Navigate to={RouterPaths.DASHBOARD} replace />,
+      element: <RootRoute/>,
     },
     {
       path: '*',
