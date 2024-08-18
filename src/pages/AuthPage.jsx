@@ -9,7 +9,9 @@ export default function AuthPage({ children }) {
 
   return (
     <WrapperView>
-      <h2 className='text-2xl font-semibold mb-6 text-center'>{isLogin ? 'Login' : 'Registration'}</h2>
+      <h2 className='text-2xl font-semibold mb-6 text-center'>
+        {isLogin ? 'Login' : 'Registration'}
+      </h2>
       {children}
       {isLogin ? (
         <Button className='w-full' variant={'link'}>

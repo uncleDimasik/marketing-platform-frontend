@@ -15,15 +15,14 @@ export const useRegisterMutation = () => {
       });
       localStorage.setItem(ACCESS_TOKEN, data.accessToken);
       navigate(RouterPaths.DASHBOARD);
-
     },
     onError: (data) => {
       console.log(data);
       toast({
-        variant: "destructive",
+        variant: 'destructive',
         title: data.response?.data?.message,
       });
-    }
+    },
   });
 
   return mutation;

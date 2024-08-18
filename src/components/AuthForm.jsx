@@ -4,9 +4,8 @@ import { Button } from '@/components/ui/button.jsx';
 import { Form } from '@/components/ui/form.jsx';
 import { useIsMutating } from '@tanstack/react-query';
 import { FormFieldInput } from '@/components/FormFieldInput.jsx';
-import React from 'react';
 
-export function AuthForm({ formSchema, defaultValues, onSubmit, isRegistration}) {
+export function AuthForm({ formSchema, defaultValues, onSubmit, isRegistration }) {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues,

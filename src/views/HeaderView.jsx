@@ -13,7 +13,7 @@ export function HeaderView() {
     <header className='py-4 px-6 flex items-center justify-between'>
       <div className='text-lg font-semibold'>
         Welcome,&nbsp;
-        {data && (<span className='text-blue-400'>{data.email}</span>)}
+        {data && <span className='text-blue-400'>{data.email}</span>}
       </div>
       <Button variant='outline' size='sm' onClick={onLogout} isLoading={isPending}>
         Logout

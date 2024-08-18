@@ -7,7 +7,6 @@ import { useCampaignForecastMutation } from '@/services/statistics/useCampaignFo
 import { ForecastResultView } from '@/views/ForecastResultView.jsx';
 import { ForecastSkeletonView } from '@/views/ForecastSkeletonView.jsx';
 import { FormFieldSelect } from '@/components/FormFieldSelect.jsx';
-import React from 'react';
 import { FormFieldInput } from '@/components/FormFieldInput.jsx';
 import { WrapperView } from '@/views/WrapperView.jsx';
 
@@ -19,8 +18,8 @@ const FormSchema = z.object({
   category: z.enum(['Technology', 'Health', 'Finance', 'Education', 'Entertainment'], {
     message: 'Please choose an option from the list.',
   }),
-  budget: z
-    .coerce.number({ message: 'Budget must be a number.' })
+  budget: z.coerce
+    .number({ message: 'Budget must be a number.' })
     .min(10, { message: 'Minimum budget is $10.' })
     .max(10000, { message: 'Maximum budget is $10,000.' }),
 });

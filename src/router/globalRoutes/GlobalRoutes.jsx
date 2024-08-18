@@ -14,7 +14,7 @@ const GlobalRoutes = () => {
       path: RouterPaths.DASHBOARD,
       element: (
         <ProtectedRoute>
-          <HeaderView/>
+          <HeaderView />
           <DashboardPage />
         </ProtectedRoute>
       ),

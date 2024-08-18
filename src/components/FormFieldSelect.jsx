@@ -1,5 +1,11 @@
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form.jsx';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select.jsx';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select.jsx';
 
 export function FormFieldSelect({ control, name, label, placeholder, options }) {
   return (
@@ -29,4 +35,3 @@ export function FormFieldSelect({ control, name, label, placeholder, options }) 
     />
   );
 }
-

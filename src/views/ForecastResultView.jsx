@@ -1,4 +1,3 @@
-import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { cn } from '@/lib/utils';
 import { DollarSign, MousePointerClick, TrendingUp, Users } from 'lucide-react';
@@ -7,9 +6,7 @@ export function ForecastResultView({ data }) {
   return (
     <Card className='mt-6 bg-accent text-white shadow-lg rounded-lg'>
       <CardHeader>
-        <CardTitle className='text-center text-2xl font-semibold'>
-          Forecast Result
-        </CardTitle>
+        <CardTitle className='text-center text-2xl font-semibold'>Forecast Result</CardTitle>
       </CardHeader>
       <CardContent className='grid grid-cols-1 gap-4'>
         <MetricCard
@@ -43,15 +40,8 @@ export function ForecastResultView({ data }) {
 
 function MetricCard({ icon, label, value, bgColor }) {
   return (
-    <div
-      className={cn(
-        'flex items-center p-4 rounded-md',
-        bgColor,
-      )}
-    >
-      <div className='p-2 rounded-full bg-gray-800 mr-4'>
-        {icon}
-      </div>
+    <div className={cn('flex items-center p-4 rounded-md', bgColor)}>
+      <div className='p-2 rounded-full bg-gray-800 mr-4'>{icon}</div>
       <div>
         <p className='text-sm text-gray-400'>{label}</p>
         <p className='text-xl font-bold'>{value}</p>
@@ -59,5 +49,3 @@ function MetricCard({ icon, label, value, bgColor }) {
     </div>
   );
 }
-
-
