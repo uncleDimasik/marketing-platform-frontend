@@ -14,6 +14,13 @@ export const useRegisterMutation = () => {
       });
       navigate(RouterPaths.DASHBOARD);
     },
+    onError: (data) => {
+      console.log(data);
+      toast({
+        variant: "destructive",
+        title: data.response?.data?.message,
+      });
+    }
   });
 
   return mutation;

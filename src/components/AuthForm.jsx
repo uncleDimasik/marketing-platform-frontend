@@ -6,7 +6,7 @@ import { useIsMutating } from '@tanstack/react-query';
 import { FormFieldInput } from '@/components/FormFieldInput.jsx';
 import React from 'react';
 
-export function AuthForm({ formSchema, defaultValues, onSubmit, isRegistration, error }) {
+export function AuthForm({ formSchema, defaultValues, onSubmit, isRegistration}) {
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues,
@@ -43,7 +43,7 @@ export function AuthForm({ formSchema, defaultValues, onSubmit, isRegistration, 
                 placeholder='Confirm your password'
               />
             )}
-            {error && <div className='mt-6 text-red-600'>Error: {error?.response?.data?.message}</div>}
+
             <Button type='submit' className='w-full' isLoading={isMutating}>
               Submit
             </Button>

@@ -11,7 +11,8 @@ const loginSchema = z.object({
 });
 
 export function LoginFormView() {
-  const { mutate, error } = useLoginMutation();
+  const { mutate } = useLoginMutation();
+
 
   const onSubmit = (formData) => {
     mutate(formData);
@@ -22,7 +23,6 @@ export function LoginFormView() {
       formSchema={loginSchema}
       defaultValues={{ email: '', password: '' }}
       onSubmit={onSubmit}
-      error={error}
     />
   );
 }

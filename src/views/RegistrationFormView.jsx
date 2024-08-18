@@ -29,7 +29,6 @@ export function RegistrationFormView() {
       defaultValues={{ email: '', password: '', confirmPassword: '' }}
       onSubmit={onSubmit}
       isRegistration={true}
-      error={error}
     />
   );
 }
