@@ -41,7 +41,7 @@ const GlobalRoutes = () => {
     },
     {
       path: '/',
-      element: <RootRoute/>,
+      element: <RootRoute />,
     },
     {
       path: '*',
