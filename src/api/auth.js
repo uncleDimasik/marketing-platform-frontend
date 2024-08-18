@@ -1,4 +1,4 @@
-import { API_BASE_URL, API_ENDPOINTS, API_RESOURCES, createApiUrl } from '@/api/constants.js';
+import { ACCESS_TOKEN, API_BASE_URL, API_ENDPOINTS, API_RESOURCES, createApiUrl } from '@/api/constants.js';
 import { axiosClient } from '@/api/axios-config.js';
 import axios from 'axios';
 
@@ -8,6 +8,7 @@ export const refreshAccessToken = async () => {
     {
       withCredentials: true,
     },
+
   );
   return response.data;
 };
