@@ -6,7 +6,7 @@ This is the frontend of a marketing platform designed to work with a backend tha
 
 - **React with Vite**: Fast development with React and Vite.
 - **TailwindCSS**: Utility-first CSS framework for styling.
-- ***`shascn/ui`:*** Pre-styled components integrated with TailwindCSS for consistent and accessible UI elements.
+- **`shascn/ui`:** Pre-styled components integrated with TailwindCSS for consistent and accessible UI elements.
 - **React Router**: Client-side routing with `react-router-dom`.
 - **Form Management**: Form handling using `react-hook-form` and validation with `zod`.
 - **State Management**: Data fetching, caching, and synchronization with server state `@tanstack/react-query`.
@@ -64,9 +64,11 @@ This is the frontend of a marketing platform designed to work with a backend tha
 
 This project is deployed on [Render](https://render.com).
 
-- **Frontend URL**: [https://marketing-platform-frontend.onrender.com](https://marketing-platform-frontend.onrender.com)
 
+- **Frontend URL**: [https://marketing-platform-frontend.onrender.com](https://marketing-platform-frontend.onrender.com)
+  **NOTE: THE FREE INSTANCE WILL SPIN DOWN WITH INACTIVITY, WHICH CAN DELAY REQUESTS BY 50 SECONDS OR MORE.**
 ## Usage
+
 
 ### Authentication
 
